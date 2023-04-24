@@ -4,12 +4,12 @@ const router = express.Router()
 
 
 //GET All Workouts
-router.get('/', (res, req) => {
+router.get('/', (req, res) => {
     res.json({mssg: 'GET All Workouts'})
 })
 
 //GET a Single workout
-router.get('/:id', (res, req)=>{
+router.get('/:id', (resq, res)=>{
     res.json({mssg: 'GET a single Workout'})
 })
 
