@@ -28,6 +28,7 @@ const WorkoutDetails = ({ workout, key }) => {
 
 WorkoutDetails.propTypes = {
   workout: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     load: PropTypes.number.isRequired,
     reps: PropTypes.number.isRequired,
