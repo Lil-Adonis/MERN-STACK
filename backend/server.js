@@ -1,36 +1,33 @@
-require("dotenv").config();
+require('dotenv').config()
 
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require('cors')
- 
-
-const workoutRoutes = require("./routes/workouts");
+const express = require('express')
+const mongoose = require('mongoose')
+const workoutRoutes = require('./routes/workouts')
+const userRoutes = require('./routes/user')
 
 // express app
-const app = express();
+const app = express()
 
-app.use(cors())
-
-//Middleware
-app.use(express.json());
+// middleware
+app.use(express.json())
 
 app.use((req, res, next) => {
-  console.log(req.path, req.method);
-  next();
-});
+  console.log(req.path, req.method)
+  next()
+})
 
-//Routes
-app.use("/api/workouts", workoutRoutes);
+// routes
+app.use('/api/workouts', workoutRoutes)
+app.use('/api/user', userRoutes)
 
-// Connect to db
+// connect to db
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-    //Listen for request
+    // listen for requests
     app.listen(process.env.PORT, () => {
-      console.log("Conneected to Db and Listening on port", process.env.PORT);
-    });
+      console.log('connected to db & listening on port', process.env.PORT)
+    })
   })
   .catch((error) => {
-    console.log(error);
-  });
+    console.log(error)
+  })
